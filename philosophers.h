@@ -21,9 +21,9 @@ typedef struct s_forks
 	t_bool			use;
 }				t_forks;
 
-typedef struct	s_val
+typedef struct	s_val //input val
 {
-	int	philo_amount;
+	int	philo_count;
 	int	die;
 	int eat;
 	int sleep;
@@ -54,9 +54,11 @@ typedef struct	s_death
 	int		num_phil;
 }				t_death;
 
-//int	ft_strncmp(const char *s1, const char *s2);
+void *ft_check_death(void *d);
+long ft_get_time(void);
 int ft_forks(pthread_mutex_t *forks);
 int ft_parse(int argc, char **argv, t_val *values);
 int	ft_philo_forks_init(t_val *values, t_phil **phil_out, t_death *sbs_death);
+
 
 #endif

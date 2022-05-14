@@ -21,7 +21,7 @@ int ft_parse(int argc, char **argv, t_val *values)
 {
 	if (argc == 5 || argc == 6)
 	{
-		values->philo_amount = ft_atoi(argv[1]);
+		values->philo_count = ft_atoi(argv[1]);
 		values->die = ft_atoi(argv[2]);
 		values->eat = ft_atoi(argv[3]);
 		values->sleep = ft_atoi(argv[4]);

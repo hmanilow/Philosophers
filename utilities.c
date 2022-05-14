@@ -1,11 +1,11 @@
 #include "philosophers.h"
 
-//int	ft_strncmp(const char *s1, const char *s2)
-//{
-//	size_t	i;
-//
-//	i = 0;
-//	while (s1[i] == s2[i] && s1[i] != '\0')
-//		i++;
-//	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-//}
+long ft_get_time(void)
+{
+	struct timeval	cur_time;
+	long time;
+
+	gettimeofday(&cur_time, NULL);
+	time = (cur_time.tv_sec * 1000) + (cur_time.tv_usec / 1000);
+	return (time);
+}
