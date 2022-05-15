@@ -9,3 +9,33 @@ long ft_get_time(void)
 	time = (cur_time.tv_sec * 1000) + (cur_time.tv_usec / 1000);
 	return (time);
 }
+
+void ft_checking_usleep(long time_ms)
+{
+	long start;
+	long cur;
+
+	start = ft_get_time();
+	cur = ft_get_time();
+	while ((cur - start) < time_ms)
+	{
+		usleep(1);
+		cur = ft_get_time();
+	}
+}
+
+void ft_print_mes(t_phil *phil, char *mes)
+{
+	long cur_time;
+
+	pthread_mutex_lock(phil->print_mut);
+	cur_time = ft_get_time();
+	phil->cur_time = cur_time - phil->start_time;
+	if (*(phil->died) == e_true)
+	{
+		pthread_mutex_unlock(phil->print_mut);
+		return ;
+	}
+	printf("%ld %d %s\n", phil->cur_time, phil->id_phil, mes);
+	pthread_mutex_unlock(phil->print_mut);
+}

@@ -2,39 +2,39 @@
 
 static void ft_death_phil(t_phil *phil, long cur_time)
 {
-	*(phil->must_die) = e_true;
-	pthread_mutex_unlock(phil->print_mutex);
+	*(phil->died) = e_true;
+	pthread_mutex_unlock(phil->print_mut);
 	printf("%ld %d is dead\n", cur_time, phil->id_phil);
-	pthread_mutex_unlock(phil->print_mutex);
-	pthread_mutex_unlock(phil->right_fork->forks);
-	pthread_mutex_unlock(phil->left_fork->forks);
+	pthread_mutex_unlock(phil->print_mut);
+	pthread_mutex_unlock(phil->right_f->forks);
+	pthread_mutex_unlock(phil->left_f->forks);
 }
 
-void *ft_check_death(void *d) //wtf
+void *ft_check_death(void *d)
 {
-	t_death *death;
+	t_death *f_death;
 	int i;
 	long cur_time;
-	int stop_eating;
+	int stop_eat;
 
-	death = (t_death *)d;
+	f_death = (t_death *)d;
 	while (1)
 	{
 		i = -1;
-		stop_eating = 0;
-		cur_time = ft_get_time() - death->check_phil[0].start_time;
-		while (++i < death->num_phil)
+		stop_eat = 0;
+		cur_time = ft_get_time() - f_death->this_phil[0].start_time;
+		while (++i < f_death->phil_number)
 		{
-			if (death->check_phil[i].count_eating == 0)
-				stop_eating++;
-			if (death->check_phil[i].last_eating_time + death->check_phil[i]
+			if (f_death->this_phil[i].num_eating == 0)
+				stop_eat++;
+			if (f_death->this_phil[i].last_eat + f_death->this_phil[i]
 			.die < cur_time)
 			{
-				ft_death_phil(&(death->check_phil[i]), cur_time);
+				ft_death_phil(&(f_death->this_phil[i]), cur_time);
 				return (NULL);
 			}
 		}
-		if (stop_eating >= death->num_phil) //wtf
+		if (stop_eat >= f_death->phil_number) //wtf
 			return (NULL);
 	}
 }

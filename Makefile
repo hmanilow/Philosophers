@@ -7,7 +7,10 @@ HEAD = philosophers.h
 
 SRC = main.c \
 	  parsing.c \
-	  utilities.c
+	  utilities.c \
+	  initialization.c \
+	  looking_for_the_death.c \
+	  what_do_phil_do.c
 
 OBJ		= 	$(SRC:.c=.o)
 

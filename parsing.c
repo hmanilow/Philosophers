@@ -1,15 +1,15 @@
 #include "philosophers.h"
 
-static int	ft_atoi(char *str)
+static int	ft_atoi(char *s)
 {
 	long int	i;
 	long int	k;
 
 	i = 0;
 	k = 0;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (s[i] <= '9' && s[i] >= '0')
 	{
-		k = (k * 10) + str[i] - '0';
+		k = (k * 10) + s[i] - '0';
 		if (k > 2147483647)
 			return (1);
 		i++;
@@ -17,19 +17,44 @@ static int	ft_atoi(char *str)
 	return ((int)k);
 }
 
-int ft_parse(int argc, char **argv, t_val *values)
+static int ft_check_arg(char **argv, int argc)
 {
-	if (argc == 5 || argc == 6)
+	int i;
+	int j;
+
+	i = 1;
+	while (i < argc)
 	{
-		values->philo_count = ft_atoi(argv[1]);
-		values->die = ft_atoi(argv[2]);
-		values->eat = ft_atoi(argv[3]);
-		values->sleep = ft_atoi(argv[4]);
-		values->repeating = -1;
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] > '9' || argv[i][j] < '0')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int ft_parse(int argc, char **argv, t_val *v)
+{
+	if (ft_check_arg(argv, argc))
+		return (1);
+	if (argc == 6 || argc == 5)
+	{
 		if (argc == 6)
-			values->repeating = ft_atoi(argv[5]);
+			v->repeating = ft_atoi(argv[5]);
+		v->philo_count = ft_atoi(argv[1]);
+		v->die = ft_atoi(argv[2]);
+		v->eat = ft_atoi(argv[3]);
+		v->sleep = ft_atoi(argv[4]);
+		v->repeating = -1;
 	}
 	else
+		return (1);
+	if ( v->die == 0 || v->philo_count == 0 || v->sleep == 0
+		||  v->eat == 0 || v->repeating == 0)
 		return (1);
 	return (0);
 }

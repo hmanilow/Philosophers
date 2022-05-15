@@ -9,19 +9,19 @@
 
 typedef enum	e_bool
 {
-	e_true,
-	e_false
+	e_false,
+	e_true
 }				t_bool;
 
 typedef struct s_forks
 {
-	pthread_mutex_t *forks;
+	pthread_mutex_t	*forks;
 	int				phil_id;
 	int				fork_id;
-	t_bool			use;
+	t_bool			exploit;
 }				t_forks;
 
-typedef struct	s_val //input val
+typedef struct	s_val
 {
 	int	philo_count;
 	int	die;
@@ -32,33 +32,36 @@ typedef struct	s_val //input val
 
 typedef struct	s_phil
 {
-	pthread_t		id_phil;
-	t_forks			*right_fork;
-	t_forks			*left_fork;
-	pthread_t		id_thread;
+	int				id_phil;
+	t_forks			*right_f;
+	t_forks			*left_f;
+	pthread_t		thread_id;
 	int				die;
 	int				eat;
 	int				sleep;
 	long			start_time;
-	long			current_time;
-	int				last_eating_time;
-	t_bool			*must_die;
-	int				count_eating;
-	pthread_mutex_t	*print_mutex;
+	long			cur_time;
+	int				last_eat;
+	t_bool			*died;
+	int				num_eating;
+	pthread_mutex_t	*print_mut;
 }				t_phil;
 
 typedef struct	s_death
 {
-	t_phil	*check_phil;
+	t_phil	*this_phil;
 	t_bool	*death;
-	int		num_phil;
+	int		phil_number;
 }				t_death;
 
-void *ft_check_death(void *d);
-long ft_get_time(void);
-int ft_forks(pthread_mutex_t *forks);
 int ft_parse(int argc, char **argv, t_val *values);
-int	ft_philo_forks_init(t_val *values, t_phil **phil_out, t_death *sbs_death);
+int	ft_philo_forks_init(t_val *values, t_phil **phils, t_death *sbs_death);
+void *ft_phil_routine(void *p);
+void *ft_check_death(void *d);
 
+void ft_print_mes(t_phil *phil, char *mes);
+
+long ft_get_time(void);
+void ft_checking_usleep(long time_ms);
 
 #endif

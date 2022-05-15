@@ -1,38 +1,23 @@
 #include "philosophers.h"
 
-static void ft_point_destroyer(t_phil *phil, t_val *values)
-{
-	int i;
-
-	i = 0;
-	pthread_mutex_destroy(phil->print_mutex);
-	while (i < values->philo_count)
-		pthread_mutex_destroy(phil[i++].right_fork->forks);
-	free(phil->right_fork->forks);
-	free(phil->right_fork);
-	free(phil->print_mutex);
-	free(phil->must_die);
-	free(phil);
-}
-
 static int ft_thr_create(t_val *values, t_phil *phil, t_death *philo_death)
 {
 	int i;
 	pthread_t *thread_id;
-	pthread_t thread_death;
+	pthread_t death_thread;
 
 	thread_id = (pthread_t *) malloc(sizeof(pthread_t) * values->philo_count);
 	i = -1;
-	if (pthread_create(&thread_death, NULL, ft_check_death, philo_death))
+	if (pthread_create(&death_thread, NULL, ft_check_death, philo_death))
 		return (1);
 	while (++i < values->philo_count)
 	{
-		if (pthread_create(&(thread_id[i]), NULL, ft_philo_routine,
-						   &(phil[i])) != 0)
+		if (pthread_create(&(thread_id[i]), NULL,
+				ft_phil_routine, &(phil[i])) != 0)
 			return (1);
 	}
 	i = -1;
-	if (pthread_join(thread_death, NULL))
+	if (pthread_join(death_thread, NULL))
 		return (1);
 	while (++i < values->philo_count)
 	{
@@ -43,10 +28,25 @@ static int ft_thr_create(t_val *values, t_phil *phil, t_death *philo_death)
 	return (0);
 }
 
+static void ft_point_destroyer(t_phil *phil, t_val *values)
+{
+	int i;
+
+	i = 0;
+	pthread_mutex_destroy(phil->print_mut);
+	while (i < values->philo_count)
+		pthread_mutex_destroy(phil[i++].right_f->forks);
+	free(phil->right_f->forks);
+	free(phil->right_f);
+	free(phil->print_mut);
+	free(phil->died);
+	free(phil);
+}
+
 int main(int argc, char **argv)
 {
 	t_val	values;
-	t_phil	phil;
+	t_phil	*phil;
 	t_death	sbs_death;
 
 	if (ft_parse(argc, argv, &values))
@@ -59,11 +59,11 @@ int main(int argc, char **argv)
 		printf("Init error\n");
 		return (0);
 	}
-	if (ft_thr_create(&values, &phil, &sbs_death)) // phil no &
+	if (ft_thr_create(&values, phil, &sbs_death))
 	{
 		printf("Thread error\n");
 		return (0);
 	}
-	ft_point_destroyer(&phil, &values); //phil no &
+	ft_point_destroyer(phil, &values);
 	return 0;
 }
