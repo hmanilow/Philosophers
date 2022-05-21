@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initialization.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmanilow <hmanilow@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/21 15:47:28 by hmanilow          #+#    #+#             */
+/*   Updated: 2022/05/21 15:49:27 by hmanilow         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers.h"
 
-static int ft_fork_init(t_forks **forkss, t_val *value)
+static int ft_fork_init(t_forks **forkss, t_val *value) // почему через
+// переменную forks
 {
 	int				i;
 	pthread_mutex_t	*fork_mutex;
@@ -44,9 +57,9 @@ static int ft_philo_init(t_phil **phils, t_val *values, t_forks *forks)
 		phil[i].id_phil = i;
 		phil[i].last_eat = 0;
 		phil[i].right_f = forks + i;
-		phil[i].left_f = forks + (i + 1) % values->philo_count;
+		phil[i].left_f = forks + (i + 1) % values->philo_count; //?
 		phil[i].start_time =  cur_time;
-		phil[i].num_eating = values->eat;
+		phil[i].num_eating = values->repeating;
 	}
 	*phils = phil;
 	return (0);
@@ -58,7 +71,7 @@ int	ft_philo_forks_init(t_val *values, t_phil **phils, t_death *sbs_death)
 	t_bool	*f_death;
 	t_forks *forks;
 	int i;
-	pthread_mutex_t *print_mut;
+	pthread_mutex_t *print_mut; //?
 
 	print_mut = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t));
 	f_death = (t_bool *)malloc(sizeof(t_bool));
@@ -74,7 +87,7 @@ int	ft_philo_forks_init(t_val *values, t_phil **phils, t_death *sbs_death)
 		phil[i].print_mut = print_mut;
 		phil[i].cur_time = 0;
 	}
-	*phils = phil;
+	*phils = phil; //?
 	sbs_death->this_phil = phil;
 	sbs_death->death = f_death;
 	sbs_death->phil_number = values->philo_count;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   looking_for_the_death.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmanilow <hmanilow@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/21 15:47:36 by hmanilow          #+#    #+#             */
+/*   Updated: 2022/05/21 15:49:26 by hmanilow         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers.h"
 
 static void ft_death_phil(t_phil *phil, long cur_time)
@@ -17,7 +29,7 @@ void *ft_check_death(void *d)
 	long cur_time;
 	int stop_eat;
 
-	f_death = (t_death *)d;
+	f_death = (t_death *)d; //?
 	while (1)
 	{
 		i = -1;
@@ -27,8 +39,8 @@ void *ft_check_death(void *d)
 		{
 			if (f_death->this_phil[i].num_eating == 0)
 				stop_eat++;
-			if (f_death->this_phil[i].last_eat + f_death->this_phil[i]
-			.die < cur_time)
+			if (f_death->this_phil[i].last_eat +
+				f_death->this_phil[i].die < cur_time)
 			{
 				ft_death_phil(&(f_death->this_phil[i]), cur_time);
 				return (NULL);
