@@ -12,13 +12,13 @@
 
 #include "philosophers.h"
 
-static void ft_put_the_forks(t_phil *phil)
+static void	ft_put_the_forks(t_phil *phil)
 {
 	pthread_mutex_unlock(phil->right_f->forks);
 	pthread_mutex_unlock(phil->left_f->forks);
 }
 
-static void ft_take_forks(t_phil *phil)
+static void	ft_take_forks(t_phil *phil)
 {
 	pthread_mutex_lock(phil->right_f->forks);
 	if (*(phil->died) == e_true)
@@ -40,7 +40,7 @@ static void ft_take_forks(t_phil *phil)
 	ft_print_mes(phil, "has taken left fork");
 }
 
-static void ft_phil_eat(t_phil *phil)
+static void	ft_phil_eat(t_phil *phil)
 {
 	if (phil->left_f->phil_id != phil->id_phil
 		&& phil->right_f->phil_id != phil->id_phil)
@@ -58,15 +58,15 @@ static void ft_phil_eat(t_phil *phil)
 	phil->last_eat = ft_get_time() - phil->start_time;
 }
 
-static void ft_phil_sleep(t_phil *phil)
+static void	ft_phil_sleep(t_phil *phil)
 {
 	ft_print_mes(phil, "is sleeping");
 	ft_checking_usleep(phil->sleep);
 }
 
-void *ft_phil_routine(void *p)
+void	*ft_phil_routine(void *p)
 {
-	t_phil *phil_date;
+	t_phil	*phil_date;
 
 	phil_date = (t_phil *)p;
 	if (phil_date->id_phil % 2 == 1)
@@ -75,18 +75,18 @@ void *ft_phil_routine(void *p)
 	{
 		ft_print_mes(phil_date, "is thinking");
 		if (*(phil_date->died) == e_true)
-			break;
+			break ;
 		ft_take_forks(phil_date);
 		if (*(phil_date->died) == e_true)
-			break;
+			break ;
 		ft_phil_eat(phil_date);
 		if (*(phil_date->died) == e_true)
-			break;
+			break ;
 		ft_phil_sleep(phil_date);
-		if (phil_date->num_eating== 0)
-			break;
+		if (phil_date->num_eating == 0)
+			break ;
 		if (*(phil_date->died) == e_true)
-			break;
+			break ;
 	}
 	return (NULL);
 }

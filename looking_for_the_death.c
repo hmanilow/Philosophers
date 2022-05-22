@@ -12,7 +12,7 @@
 
 #include "philosophers.h"
 
-static void ft_death_phil(t_phil *phil, long cur_time)
+static void	ft_death_phil(t_phil *phil, long cur_time)
 {
 	*(phil->died) = e_true;
 	pthread_mutex_unlock(phil->print_mut);
@@ -22,12 +22,12 @@ static void ft_death_phil(t_phil *phil, long cur_time)
 	pthread_mutex_unlock(phil->left_f->forks);
 }
 
-void *ft_check_death(void *d)
+void	*ft_check_death(void *d)
 {
-	t_death *f_death;
-	int i;
-	long cur_time;
-	int stop_eat;
+	t_death	*f_death;
+	int		i;
+	long	cur_time;
+	int		stop_eat;
 
 	f_death = (t_death *)d; //?
 	while (1)
@@ -39,8 +39,8 @@ void *ft_check_death(void *d)
 		{
 			if (f_death->this_phil[i].num_eating == 0)
 				stop_eat++;
-			if (f_death->this_phil[i].last_eat +
-				f_death->this_phil[i].die < cur_time)
+			if (f_death->this_phil[i].last_eat
+				+ f_death->this_phil[i].die < cur_time)
 			{
 				ft_death_phil(&(f_death->this_phil[i]), cur_time);
 				return (NULL);

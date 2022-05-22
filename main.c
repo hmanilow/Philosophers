@@ -12,11 +12,11 @@
 
 #include "philosophers.h"
 
-static int ft_thr_create(t_val *values, t_phil *phil, t_death *philo_death)
+static int	ft_thr_create(t_val *values, t_phil *phil, t_death *philo_death)
 {
-	int i;
-	pthread_t *thread_id;
-	pthread_t death_thread;
+	int			i;
+	pthread_t	*thread_id;
+	pthread_t	death_thread;
 
 	thread_id = (pthread_t *) malloc(sizeof(pthread_t) * values->philo_count);
 	i = -1;
@@ -40,9 +40,9 @@ static int ft_thr_create(t_val *values, t_phil *phil, t_death *philo_death)
 	return (0);
 }
 
-static void ft_point_destroyer(t_phil *phil, t_val *values)
+static void	ft_point_destroyer(t_phil *phil, t_val *values)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	pthread_mutex_destroy(phil->print_mut);
@@ -55,7 +55,7 @@ static void ft_point_destroyer(t_phil *phil, t_val *values)
 	free(phil);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_val	values;
 	t_phil	*phil;
@@ -63,19 +63,19 @@ int main(int argc, char **argv)
 
 	if (ft_parse(argc, argv, &values))
 	{
-		printf("Arg error! You can use 4 or 5 arg.\n");
-		return (0);
+		//printf("Arg error! You can use 4 or 5 arg.\n");
+		return (ft_exit("Arg error! You can use 4 or 5 arg.\n", 1));
 	}
 	if (ft_philo_forks_init(&values, &phil, &sbs_death))
 	{
-		printf("Init error\n");
-		return (0);
+		//printf("Init error\n");
+		return (ft_exit("Init error\n", 1));
 	}
 	if (ft_thr_create(&values, phil, &sbs_death))
 	{
-		printf("Thread error\n");
-		return (0);
+		//printf("Thread error\n");
+		return (ft_exit("Thread error\n", 1));
 	}
 	ft_point_destroyer(phil, &values);
-	return 0;
+	return (0);
 }

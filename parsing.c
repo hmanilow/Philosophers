@@ -29,10 +29,10 @@ static int	ft_atoi(char *s)
 	return ((int)k);
 }
 
-static int ft_check_arg(char **argv, int argc)
+static int	ft_check_arg(char **argv, int argc)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	while (i < argc)
@@ -49,7 +49,7 @@ static int ft_check_arg(char **argv, int argc)
 	return (0);
 }
 
-int ft_parse(int argc, char **argv, t_val *v)
+int	ft_parse(int argc, char **argv, t_val *v)
 {
 	if (ft_check_arg(argv, argc))
 		return (1);
@@ -65,8 +65,8 @@ int ft_parse(int argc, char **argv, t_val *v)
 	}
 	else
 		return (1);
-	if ( v->die == 0 || v->philo_count == 0 || v->sleep == 0
-		||  v->eat == 0 || v->repeating == 0)
+	if (v->die == 0 || v->philo_count == 0 || v->sleep == 0
+		|| v->eat == 0 || v->repeating == 0)
 		return (1);
 	return (0);
 }
