@@ -6,7 +6,7 @@
 /*   By: hmanilow <hmanilow@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 15:47:36 by hmanilow          #+#    #+#             */
-/*   Updated: 2022/05/21 15:49:26 by hmanilow         ###   ########.fr       */
+/*   Updated: 2022/05/23 15:59:06 by hmanilow         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*ft_check_death(void *d)
 	long	cur_time;
 	int		stop_eat;
 
-	f_death = (t_death *)d; //?
+	f_death = (t_death *)d;
 	while (1)
 	{
 		i = -1;
@@ -46,7 +46,7 @@ void	*ft_check_death(void *d)
 				return (NULL);
 			}
 		}
-		if (stop_eat >= f_death->phil_number) //wtf
+		if (stop_eat >= f_death->phil_number)
 			return (NULL);
 	}
 }

@@ -1,33 +1,46 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hmanilow <hmanilow@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/05/23 16:08:39 by hmanilow          #+#    #+#              #
+#    Updated: 2022/05/23 16:19:52 by hmanilow         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-NAME = philosophers
+NAME	=	philo
 
-FLAGS	= -Wall -Werror -Wextra -fsanitize=address
+FLAGS	=	-Wall -Werror -Wextra -pthread
 
-HEAD = philosophers.h
+HEAD	=	philosophers.h
 
-SRC = main.c \
-	  parsing.c \
-	  utilities.c \
-	  initialization.c \
-	  looking_for_the_death.c \
-	  what_do_phil_do.c
+SRC 	=	philo.c \
+			parsing.c \
+	  		utilities.c \
+	  		initialization.c \
+	  		looking_for_the_death.c \
+	  		what_do_phil_do.c
 
-OBJ		= 	$(SRC:.c=.o)
 
-all: $(NAME)
+OBJS		=	${SRC:.c=.o}
 
-$(NAME): $(OBJ)
-	gcc  $(FLAGS) $(SRC) -o $(NAME)
+CC			=	gcc
 
-%.o : %.c
-	gcc $(FLAGS) -c $<
+RM			=	rm -f
+
+all:		$(HEAD) $(NAME)
+
+$(NAME):	$(OBJS) $(HEAD)
+				$(CC) ${OBJS} -o ${NAME} ${FLAGS}
 
 clean:
-	/bin/rm -f $(OBJ)
-	make -C clean
+			@$(RM) $(OBJS)
 
-fclean: clean
-	/bin/rm -f $(NAME)
-	make -C  fclean
+fclean:		clean
+			@$(RM) $(NAME)
 
-re: fclean all
+re:			fclean all
+
+.PHONY:		all clean fclean re

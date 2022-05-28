@@ -55,13 +55,13 @@ int	ft_parse(int argc, char **argv, t_val *v)
 		return (1);
 	if (argc == 6 || argc == 5)
 	{
-		if (argc == 6)
-			v->repeating = ft_atoi(argv[5]);
 		v->philo_count = ft_atoi(argv[1]);
 		v->die = ft_atoi(argv[2]);
 		v->eat = ft_atoi(argv[3]);
 		v->sleep = ft_atoi(argv[4]);
 		v->repeating = -1;
+		if (argc == 6)
+			v->repeating = ft_atoi(argv[5]);
 	}
 	else
 		return (1);
