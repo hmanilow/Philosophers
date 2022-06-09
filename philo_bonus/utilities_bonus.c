@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utilities.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hmanilow <hmanilow@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/21 15:47:54 by hmanilow          #+#    #+#             */
-/*   Updated: 2022/05/21 15:49:20 by hmanilow         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "philo_bonus.h"
 
 int	ft_exit(char *str, int error)
@@ -61,7 +49,7 @@ void	ft_print_mes(t_phil *phil, char *mes)
 	sem_wait(phil->storage->print_s);
 	cur_time = ft_get_time();
 	phil->cur_time = cur_time - phil->storage->start_time;
-	if (*(phil->died) == e_true)
+	if (phil->died == e_true)
 	{
 		sem_post(phil->storage->print_s);
 		return ;

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   what_do_phil_do.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hmanilow <hmanilow@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/21 15:47:58 by hmanilow          #+#    #+#             */
-/*   Updated: 2022/05/21 15:49:18 by hmanilow         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "philo_bonus.h"
 
 void	ft_take_forks(t_phil *phil)
@@ -37,10 +25,12 @@ void	ft_phil_sleep(t_phil *phil)
 	ft_checking_usleep(phil->storage->sleep);
 }
 
-void	*ft_phil_routine(t_phil *phil)
+void	ft_phil_routine(t_phil *phil)
 {
-	pthread_p deaths_thread;
+	pthread_t deaths_thread;
 
+	if (pthread_create(&deaths_thread, NULL, ft_checking_death, phil))
+		ft_exit("Trhead error", 1);
 	if (phil->id_phil % 2 == 1)
 		usleep(100);
 	while (1)
@@ -53,7 +43,7 @@ void	*ft_phil_routine(t_phil *phil)
 		if (phil->died == e_true)
 			break ;
 		ft_phil_sleep(phil);
-		if (phil->num_eating == 0
+		if (phil->num_eating == 0)
 			break ;
 		if (phil->died == e_true)
 			break ;

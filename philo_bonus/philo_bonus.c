@@ -1,4 +1,3 @@
-
 #include "philo_bonus.h"
 
 void	ft_point_destroyer(t_phil *phil, t_val *storage)
@@ -11,10 +10,10 @@ void	ft_point_destroyer(t_phil *phil, t_val *storage)
 		kill(phil[i].pid_id, SIGKILL);
 		i++;
 	}
-	sem_close(storage.forks);
-	sem_close();
-	sem_close();
-	sem_close();
+	sem_close(storage->forks);
+	sem_close(storage->died);
+	sem_close(storage->print_s);
+	sem_close(storage->death_stop);
 	sem_unlink("forks");
 	sem_unlink("died");
 	sem_unlink("print_s");

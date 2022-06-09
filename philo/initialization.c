@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "philosophers.h"
 
 static int	ft_fork_init(t_forks **forkss, t_val *value)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "philosophers.h"
 
 static int	ft_thr_create(t_val *values, t_phil *phil, t_death *philo_death)
 {

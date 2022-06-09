@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   initialization.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hmanilow <hmanilow@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/21 15:47:28 by hmanilow          #+#    #+#             */
-/*   Updated: 2022/05/23 15:58:54 by hmanilow         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "philo_bonus.h"
 
 void ft_init_sem(t_val *storage)
@@ -32,12 +20,12 @@ void ft_init_sem(t_val *storage)
 		ft_exit("SEM error 4\n", 1);
 }
 
-static int	ft_philo_init(t_val *storage)
+t_phil	*ft_philo_init(t_val *storage)
 {
 	int		i;
 	t_phil	*phil;
 
-	phil = (t_phil *) malloc(sizeof(t_phil) * storage->philo_count);
+	phil = (t_phil *)malloc(sizeof(t_phil) * storage->philo_count);
 	if (!phil)
 		ft_exit("Malloc_error\n", 1);
 	i = 0;
@@ -52,5 +40,5 @@ static int	ft_philo_init(t_val *storage)
 		phil[i].pid_id = -1;
 		i++;
 	}
-	return (philo);
+	return (phil);
 }
