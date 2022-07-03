@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   what_do_phil_do_bonus.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmanilow <hmanilow@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/01 13:19:49 by hmanilow          #+#    #+#             */
+/*   Updated: 2022/07/01 13:23:56 by hmanilow         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
 void	ft_take_forks(t_phil *phil)
@@ -27,7 +39,7 @@ void	ft_phil_sleep(t_phil *phil)
 
 void	ft_phil_routine(t_phil *phil)
 {
-	pthread_t deaths_thread;
+	pthread_t	deaths_thread;
 
 	if (pthread_create(&deaths_thread, NULL, ft_checking_death, phil))
 		ft_exit("Trhead error", 1);

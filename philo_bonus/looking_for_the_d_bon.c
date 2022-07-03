@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   looking_for_the_d_bon.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmanilow <hmanilow@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/01 13:20:33 by hmanilow          #+#    #+#             */
+/*   Updated: 2022/07/01 13:23:47 by hmanilow         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
-void ft_death_phil(t_phil *phil, long cur_time)
+void	ft_death_phil(t_phil *phil, long cur_time)
 {
 	phil->died = e_true;
 	sem_wait(phil->storage->print_s);
@@ -9,10 +21,10 @@ void ft_death_phil(t_phil *phil, long cur_time)
 	sem_post(phil->storage->death_stop);
 }
 
-void *ft_checking_death(void *p)
+void	*ft_checking_death(void *p)
 {
-	t_phil *phil;
-	long cur_time;
+	t_phil	*phil;
+	long	cur_time;
 
 	phil = (t_phil *)p;
 	while (1)
@@ -22,7 +34,7 @@ void *ft_checking_death(void *p)
 		if (phil->last_eat + phil->storage->die < cur_time)
 		{
 			ft_death_phil(phil, cur_time);
-			break;
+			break ;
 		}
 		sem_post(phil->storage->died);
 		sem_wait(phil->storage->died);
@@ -30,7 +42,7 @@ void *ft_checking_death(void *p)
 		{
 			usleep(phil->storage->die * 1000);
 			sem_post(phil->storage->death_stop);
-			break;
+			break ;
 		}
 		sem_post(phil->storage->died);
 	}

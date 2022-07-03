@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmanilow <hmanilow@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/01 13:21:13 by hmanilow          #+#    #+#             */
+/*   Updated: 2022/07/01 13:23:53 by hmanilow         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
 void	ft_point_destroyer(t_phil *phil, t_val *storage)
@@ -23,7 +35,7 @@ void	ft_point_destroyer(t_phil *phil, t_val *storage)
 
 void	ft_create_proc(t_val *storage, t_phil *phil)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < storage->philo_count)

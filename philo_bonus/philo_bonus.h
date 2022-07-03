@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmanilow <hmanilow@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/01 13:20:12 by hmanilow          #+#    #+#             */
+/*   Updated: 2022/07/01 13:23:53 by hmanilow         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_BONUS_H
 # define PHILO_BONUS_H
 
@@ -19,7 +31,7 @@ typedef struct s_val
 {
 	sem_t	*forks;
 	sem_t	*print_s;
-	sem_t 	*died;
+	sem_t	*died;
 	sem_t	*death_stop;
 	int		philo_count;
 	int		die;
