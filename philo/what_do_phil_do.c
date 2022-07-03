@@ -66,26 +66,26 @@ static void	ft_phil_sleep(t_phil *phil)
 
 void	*ft_phil_routine(void *p)
 {
-	t_phil	*phil_date;
+	t_phil	*philo_date;
 
-	phil_date = (t_phil *)p;
-	if (phil_date->id_phil % 2 == 1)
+	philo_date = (t_phil *)p;
+	if (philo_date->id_phil % 2 == 1)
 		usleep(2500);
 	while (1)
 	{
-		ft_print_mes(phil_date, "is thinking");
-		if (*(phil_date->died) == e_true)
+		ft_print_mes(philo_date, "is thinking");
+		if (*(philo_date->died) == e_true)
 			break ;
-		ft_take_forks(phil_date);
-		if (*(phil_date->died) == e_true)
+		ft_take_forks(philo_date);
+		if (*(philo_date->died) == e_true)
 			break ;
-		ft_phil_eat(phil_date);
-		if (*(phil_date->died) == e_true)
+		ft_phil_eat(philo_date);
+		if (*(philo_date->died) == e_true)
 			break ;
-		ft_phil_sleep(phil_date);
-		if (phil_date->num_eating == 0)
+		ft_phil_sleep(philo_date);
+		if (philo_date->num_eating == 0)
 			break ;
-		if (*(phil_date->died) == e_true)
+		if (*(philo_date->died) == e_true)
 			break ;
 	}
 	return (NULL);

@@ -25,24 +25,24 @@ static void	ft_death_phil(t_phil *phil, long cur_time)
 void	*ft_check_death(void *d)
 {
 	t_death	*f_death;
-	int		i;
+	int		iu;
 	long	cur_time;
 	int		stop_eat;
 
 	f_death = (t_death *)d;
 	while (1)
 	{
-		i = -1;
+		iu = -1;
 		stop_eat = 0;
 		cur_time = ft_get_time() - f_death->this_phil[0].start_time;
-		while (++i < f_death->phil_number)
+		while (++iu < f_death->phil_number)
 		{
-			if (f_death->this_phil[i].num_eating == 0)
+			if (f_death->this_phil[iu].num_eating == 0)
 				stop_eat++;
-			if (f_death->this_phil[i].last_eat
-				+ f_death->this_phil[i].die < cur_time)
+			if (f_death->this_phil[iu].last_eat
+				+ f_death->this_phil[iu].die < cur_time)
 			{
-				ft_death_phil(&(f_death->this_phil[i]), cur_time);
+				ft_death_phil(&(f_death->this_phil[iu]), cur_time);
 				return (NULL);
 			}
 		}

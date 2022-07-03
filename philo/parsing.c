@@ -14,17 +14,17 @@
 
 static int	ft_atoi(char *s)
 {
-	long int	i;
+	long int	iu;
 	long int	k;
 
-	i = 0;
+	iu = 0;
 	k = 0;
-	while (s[i] <= '9' && s[i] >= '0')
+	while (s[iu] <= '9' && s[iu] >= '0')
 	{
-		k = (k * 10) + s[i] - '0';
+		k = (k * 10) + s[iu] - '0';
 		if (k > 2147483647)
 			return (1);
-		i++;
+		iu++;
 	}
 	return ((int)k);
 }

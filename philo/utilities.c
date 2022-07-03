@@ -31,14 +31,14 @@ long	ft_get_time(void)
 void	ft_checking_usleep(long time_ms)
 {
 	long	start;
-	long	cur;
+	long	curr;
 
 	start = ft_get_time();
-	cur = ft_get_time();
-	while ((cur - start) < time_ms)
+	curr = ft_get_time();
+	while ((curr - start) < time_ms)
 	{
 		usleep(1);
-		cur = ft_get_time();
+		curr = ft_get_time();
 	}
 }
 

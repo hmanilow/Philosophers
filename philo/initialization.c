@@ -39,26 +39,26 @@ static int	ft_fork_init(t_forks **forkss, t_val *value)
 
 static int	ft_philo_init(t_phil **phils, t_val *values, t_forks *forks)
 {
-	int		i;
+	int		iu;
 	long	cur_time;
 	t_phil	*phil;
 
-	i = -1;
+	iu = -1;
 	phil = (t_phil *) malloc(sizeof(t_phil) * values->philo_count);
 	if (!phil)
 		return (1);
 	cur_time = ft_get_time();
-	while (++i < values->philo_count)
+	while (++iu < values->philo_count)
 	{
-		phil[i].die = values->die;
-		phil[i].eat = values->eat;
-		phil[i].sleep = values->sleep;
-		phil[i].id_phil = i;
-		phil[i].last_eat = 0;
-		phil[i].right_f = forks + i;
-		phil[i].left_f = forks + (i + 1) % values->philo_count;
-		phil[i].start_time = cur_time;
-		phil[i].num_eating = values->repeating;
+		phil[iu].die = values->die;
+		phil[iu].eat = values->eat;
+		phil[iu].sleep = values->sleep;
+		phil[iu].id_phil = iu;
+		phil[iu].last_eat = 0;
+		phil[iu].right_f = forks + iu;
+		phil[iu].left_f = forks + (iu + 1) % values->philo_count;
+		phil[iu].start_time = cur_time;
+		phil[iu].num_eating = values->repeating;
 	}
 	*phils = phil;
 	return (0);

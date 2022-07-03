@@ -16,14 +16,14 @@ FLAGS	=	-Wall -Werror -Wextra -pthread
 
 HEAD	=	philosophers.h
 
-SRC 	=	philo.c \
+SRCS 	=	philo.c \
 			parsing.c \
 	  		utilities.c \
 	  		initialization.c \
 	  		looking_for_the_death.c \
 	  		what_do_phil_do.c
 
-OBJS		=	${SRC:.c=.o}
+OBJS		=	${SRCS:.c=.o}
 
 CC			=	gcc
 

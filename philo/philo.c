@@ -42,12 +42,12 @@ static int	ft_thr_create(t_val *values, t_phil *phil, t_death *philo_death)
 
 static void	ft_point_destroyer(t_phil *phil, t_val *values)
 {
-	int	i;
+	int	iu;
 
-	i = 0;
+	iu = 0;
 	pthread_mutex_destroy(phil->print_mut);
-	while (i < values->philo_count)
-		pthread_mutex_destroy(phil[i++].right_f->forks);
+	while (iu < values->philo_count)
+		pthread_mutex_destroy(phil[iu++].right_f->forks);
 	free(phil->right_f->forks);
 	free(phil->right_f);
 	free(phil->print_mut);

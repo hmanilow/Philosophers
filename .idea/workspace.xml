@@ -6,7 +6,17 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba9a1b28-2573-4383-a395-7dbb106eedc8" name="Changes" comment="" />
+    <list default="true" id="ba9a1b28-2573-4383-a395-7dbb106eedc8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/philo/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo/initialization.c" beforeDir="false" afterPath="$PROJECT_DIR$/philo/initialization.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo/looking_for_the_death.c" beforeDir="false" afterPath="$PROJECT_DIR$/philo/looking_for_the_death.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo/parsing.c" beforeDir="false" afterPath="$PROJECT_DIR$/philo/parsing.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo/philo.c" beforeDir="false" afterPath="$PROJECT_DIR$/philo/philo.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo/philosophers.h" beforeDir="false" afterPath="$PROJECT_DIR$/philo/philosophers.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo/utilities.c" beforeDir="false" afterPath="$PROJECT_DIR$/philo/utilities.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo/what_do_phil_do.c" beforeDir="false" afterPath="$PROJECT_DIR$/philo/what_do_phil_do.c" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,19 +28,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2AAGNeOKFLMa3U1H0gWwxTqdrWP" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="cf.first.check.clang-format" value="false" />
-    <property name="cidr.known.project.marker" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "/Users/hmanilow/Desktop/dsgd"
+  }
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -40,6 +56,7 @@
       <option name="presentableId" value="Default" />
       <updated>1654444937604</updated>
       <workItem from="1654444938696" duration="1000" />
+      <workItem from="1656862111992" duration="615000" />
     </task>
     <servers />
   </component>
